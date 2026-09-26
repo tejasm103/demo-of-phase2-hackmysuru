@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Dashboard — AdaptiveLearn AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">
+      <a href="/dashboard" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none;">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">AdaptiveLearn <span>AI</span></div>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/dashboard" class="nav-item">Dashboard</a></li>
+      <li><a href="/courses" class="nav-item active">Courses</a></li>
+      <li><a href="/videos" class="nav-item">YouTube Learning</a></li>
+      <li><a href="/history" class="nav-item">Viewed History</a></li>
+      <li><a href="/community" class="nav-item">Community</a></li>
+      <li><a href="/facilitator" class="nav-item">Facilitator Portal</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="persona-switcher">
+        <span>👤 Persona:</span>
+        <select id="globalPersonaSelect">
+          <option value="1">Rahul (Math 43% • Space)</option>
+          <option value="2">Priya (Math 82% • Robotics)</option>
+          <option value="3">Arjun (CS 68% • Gaming)</option>
+          <option value="4">Ananya (Physics 88% • Environment)</option>
+          <option value="5">Kiran (New Student)</option>
+          <option value="6">Dr. Sharma (Facilitator)</option>
+          <option value="7">Principal Davis (Admin)</option>
+        </select>
+      </div>
+      <a href="/api/auth/logout" class="btn btn-secondary btn-sm">Sign Out</a>
+    </div>
+  </nav>
+
+  <main class="dashboard-container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem;">
+          <h1 id="courseTitle" style="font-size:2.2rem; font-weight:800;">Mathematics</h1>
+          <span class="badge badge-stable" id="courseCode">MATH101</span>
+        </div>
+        <p id="courseDesc" style="color:var(--text-muted); max-width:800px;">
+          Curriculum covering Algebra, Functions, Statistics, Probability, and Machine Learning Mathematics.
+        </p>
+      </div>
+      <div style="display:flex; gap:0.75rem;">
+        <a href="/assessment" class="btn btn-primary">⚡ Take Adaptive Practice</a>
+        <a href="/community" class="btn btn-secondary">💬 Course Community</a>
+      </div>
+    </div>
+
+    <!-- Knowledge Graph DAG Section -->
+    <div class="graph-container">
+      <div class="card-header">
+        <h3 class="card-title">Prerequisite Graph & Concept Progression</h3>
+        <span style="font-size:0.85rem; color:var(--text-subtle);">Click unlocked concepts to launch practice</span>
+      </div>
+      <div class="graph-legend">
+        <span><span class="legend-dot dot-mastered"></span> Mastered (&gt;=70%)</span>
+        <span><span class="legend-dot dot-learning"></span> Learning</span>
+        <span><span class="legend-dot dot-practice"></span> Needs Practice</span>
+        <span><span class="legend-dot dot-locked"></span> 🔒 Locked</span>
+      </div>
+      <div class="graph-canvas-wrapper">
+        <div class="dag-nodes-row" id="knowledgeGraphNodes">
+          <!-- Populated by course.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Concepts List & Playlists Grid -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:2rem;">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">📖 Curriculum Concepts & Gating Hierarchy</h3>
+        </div>
+        <div class="path-step-list" id="courseConceptsList">
+          <!-- Populated by course.js -->
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">📺 Recommended Playlists for this Course</h3>
+        </div>
+        <div class="media-card-grid" id="coursePlaylistsGrid" style="grid-template-columns:1fr;">
+          <!-- Populated by course.js -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-tagline">“One platform. Shared knowledge. Personalized learning. Connected learners.”</div>
+    <div>AdaptiveLearn AI © 2026. Built with Python, Flask, scikit-learn, and Vanilla HTML/CSS/JS.</div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/dashboard.js"></script>
+  <script src="/static/js/course.js"></script>
+</body>
+</html>

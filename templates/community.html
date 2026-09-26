@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connected Learners Community — AdaptiveLearn AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link rel="stylesheet" href="/static/css/community.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="app-header">
+    <div class="header-inner">
+      <a href="/" class="brand-logo">
+        <span class="logo-icon">✨</span>
+        <span class="logo-text">AdaptiveLearn <span class="logo-ai">AI</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/courses">Courses</a>
+        <a href="/learning">Adaptive Session</a>
+        <a href="/videos">Videos</a>
+        <a href="/history">History</a>
+        <a href="/community" class="active">Community</a>
+        <a href="/study-groups">Study Groups</a>
+        <a href="/projects">Projects</a>
+        <a href="/facilitator" class="facilitator-link">Educator View</a>
+      </nav>
+      <div class="user-menu">
+        <span class="user-badge">👤 <span id="navUserName">{{ current_user.name }}</span></span>
+        <button class="btn btn-secondary btn-sm" onclick="App.logout()">Sign Out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="community-container">
+    <!-- Header -->
+    <div class="community-header">
+      <div>
+        <div style="font-size:0.85rem; color:var(--accent-secondary); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.25rem;">
+          Shared Knowledge & Peer Collaboration
+        </div>
+        <h1 style="font-size:2.2rem; font-weight:800; background:linear-gradient(135deg, #fff 30%, #a5b4fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
+          Connected Learners Hub
+        </h1>
+        <p style="color:var(--text-muted); font-size:1rem; margin-top:0.4rem;">
+          Collaborate with peers, ask questions with Socratic AI guidance, join study circles, and build cross-course projects.
+        </p>
+      </div>
+      <div>
+        <a href="#newPostCard" class="btn btn-primary">
+          ✏️ Ask a Question
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchCommunityTab('discussions', this)">💬 Academic Discussions</button>
+      <button class="tab-btn" onclick="switchCommunityTab('studyGroups', this)">👥 Peer Study Groups</button>
+      <button class="tab-btn" onclick="switchCommunityTab('projects', this)">🚀 Collaborative Projects</button>
+      <button class="tab-btn" onclick="switchCommunityTab('challenges', this)">🏆 Weekly Challenges</button>
+    </div>
+
+    <!-- TAB 1: Discussions -->
+    <section id="tabDiscussions">
+      <!-- Create Post Composer -->
+      <div class="card" id="newPostCard" style="margin-bottom:2rem; background:rgba(30, 41, 59, 0.5); border:1px solid rgba(99, 102, 241, 0.25);">
+        <h3 style="font-size:1.15rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+          <span>💡</span> Start a Discussion or Ask for Socratic Clarification
+        </h3>
+        <form id="newPostForm">
+          <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="form-label" for="postTitleInput">Question / Topic Title</label>
+              <input type="text" id="postTitleInput" class="form-input" placeholder="e.g. How do I intuitively understand Normal Distribution standard deviations?" required>
+            </div>
+            <div>
+              <label class="form-label" for="postTypeSelect">Post Category</label>
+              <select id="postTypeSelect" class="form-input">
+                <option value="question">Question</option>
+                <option value="discussion">Academic Discussion</option>
+                <option value="resource_share">Resource Share</option>
+                <option value="study_group_invite">Study Group Invite</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-bottom:1.25rem;">
+            <label class="form-label" for="postContentInput">Your Explanation, Code, or Query</label>
+            <textarea id="postContentInput" class="form-input" rows="3" placeholder="Describe where you got stuck or what concept you want to explore with peers and AI..." required></textarea>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.8rem; color:var(--text-subtle);">
+              🤖 Includes optional AI Socratic Hint & Peer review
+            </span>
+            <button type="submit" class="btn btn-primary">
+              Publish Post
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Posts Feed Container -->
+      <div id="communityPostsList" class="post-list">
+        <div style="text-align:center; padding:3rem; color:var(--text-muted);">
+          Loading community discussions...
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: Study Groups -->
+    <section id="tabStudyGroups" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+        <div>
+          <h2 style="font-size:1.5rem;">Active Study Circles</h2>
+          <p style="color:var(--text-muted); font-size:0.9rem;">Join structured peer circles for focused collaborative problem-solving.</p>
+        </div>
+        <a href="/study-groups" class="btn btn-secondary btn-sm">View All Groups →</a>
+      </div>
+      <div id="studyGroupsGrid" class="grid-cards-3"></div>
+    </section>
+
+    <!-- TAB 3: Projects -->
+    <section id="tabProjects" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+        <div>
+          <h2 style="font-size:1.5rem;">Cross-Course Collaborative Projects</h2>
+          <p style="color:var(--text-muted); font-size:0.9rem;">Interdisciplinary teams combining Mathematics, Physics, and Computer Science.</p>
+        </div>
+        <a href="/projects" class="btn btn-secondary btn-sm">Explore Projects →</a>
+      </div>
+      <div id="projectsGrid" class="grid-cards-3"></div>
+    </section>
+
+    <!-- TAB 4: Challenges -->
+    <section id="tabChallenges" style="display:none;">
+      <div style="margin-bottom:1.5rem;">
+        <h2 style="font-size:1.5rem;">Weekly Adaptive Problem Challenges</h2>
+        <p style="color:var(--text-muted); font-size:0.9rem;">Earn mastery points and climb the school leaderboard through multi-concept synthesis.</p>
+      </div>
+      <div id="challengesGrid" class="grid-cards-3"></div>
+    </section>
+  </main>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/community.js"></script>
+  <script>
+    function switchCommunityTab(tabName, btnEl) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+
+      document.getElementById('tabDiscussions').style.display = tabName === 'discussions' ? 'block' : 'none';
+      document.getElementById('tabStudyGroups').style.display = tabName === 'studyGroups' ? 'block' : 'none';
+      document.getElementById('tabProjects').style.display = tabName === 'projects' ? 'block' : 'none';
+      document.getElementById('tabChallenges').style.display = tabName === 'challenges' ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>

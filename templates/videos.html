@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Video Lecture — AdaptiveLearn AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">
+      <a href="/dashboard" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none;">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">AdaptiveLearn <span>AI</span></div>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/dashboard" class="nav-item">Dashboard</a></li>
+      <li><a href="/courses" class="nav-item">Courses</a></li>
+      <li><a href="/videos" class="nav-item active">YouTube Learning</a></li>
+      <li><a href="/history" class="nav-item">Viewed History</a></li>
+      <li><a href="/community" class="nav-item">Community</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="/dashboard" class="btn btn-secondary btn-sm">Return to Dashboard</a>
+    </div>
+  </nav>
+
+  <main class="dashboard-container">
+    <div style="display:grid; grid-template-columns: 2.2fr 1fr; gap:2rem;">
+      <!-- Video Player & Meta -->
+      <div>
+        <div style="position:relative; width:100%; padding-bottom:56.25%; background:#000; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border-subtle); margin-bottom:1.5rem; box-shadow:var(--shadow-md);">
+          <iframe id="youtubeIframe" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- Video Details & Progress -->
+        <div class="card" style="margin-bottom:1.5rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.75rem; flex-wrap:wrap; gap:1rem;">
+            <div>
+              <h1 id="videoTitle" style="font-size:1.5rem; font-weight:800; margin-bottom:0.35rem;">Video Title</h1>
+              <div id="videoChannel" style="color:var(--text-muted); font-size:0.9rem;">Channel Partner</div>
+            </div>
+            <button id="btnMarkVideoDone" class="btn btn-success">
+              ✓ Mark Video Completed
+            </button>
+          </div>
+
+          <!-- Video Progress Bar -->
+          <div style="margin:1rem 0;">
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:0.4rem;">
+              <span style="color:#cbd5e1; font-weight:600;">Learning Engagement Progress</span>
+              <span id="videoProgressText" style="color:#38bdf8;">0% completed</span>
+            </div>
+            <div class="progress-bar-container" style="height:8px;">
+              <div id="videoProgressFill" class="progress-bar-fill" style="width:0%;"></div>
+            </div>
+          </div>
+
+          <div style="background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.25); border-radius:var(--radius-sm); padding:0.85rem; margin-top:1rem; font-size:0.85rem; color:#c7d2fe;">
+            💡 <strong>Adaptive Governance Reminder:</strong> Video completion records view history but does NOT automatically award concept mastery. Mastery requires demonstrated practice and assessment performance!
+          </div>
+
+          <p id="videoDesc" style="color:var(--text-muted); font-size:0.9rem; margin-top:1rem; line-height:1.5;"></p>
+        </div>
+      </div>
+
+      <!-- Playlist Video Sidebar -->
+      <div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">📑 Playlist Lessons</h3>
+          </div>
+          <div class="path-step-list" id="playlistVideoList">
+            <!-- Populated by videos.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/videos.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdaptiveLearn AI — Adaptive Learning & Real-Time Intervention Platform</title>
+  <meta name="description" content="One platform. Shared knowledge. Personalized learning. Connected learners. Next-generation adaptive learning for schools.">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="brand-icon">⚡</div>
+      <div class="brand-text">AdaptiveLearn <span>AI</span></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/dashboard" class="nav-item">Dashboard</a></li>
+      <li><a href="/courses" class="nav-item">Courses</a></li>
+      <li><a href="/videos" class="nav-item">YouTube Learning</a></li>
+      <li><a href="/history" class="nav-item">Viewed History</a></li>
+      <li><a href="/community" class="nav-item">Community</a></li>
+      <li><a href="/facilitator" class="nav-item">Facilitator Portal</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="persona-switcher">
+        <span>👤 Persona:</span>
+        <select id="globalPersonaSelect">
+          <option value="1">Rahul (Struggling • Space)</option>
+          <option value="2">Priya (Mastered • Robotics)</option>
+          <option value="3">Arjun (CS • Gaming)</option>
+          <option value="4">Ananya (Physics • Environment)</option>
+          <option value="5">Kiran (New Student)</option>
+          <option value="6">Dr. Sharma (Facilitator)</option>
+          <option value="7">Principal Davis (Admin)</option>
+        </select>
+      </div>
+      <a href="/login" class="btn btn-secondary btn-sm">Sign In</a>
+      <a href="/register" class="btn btn-primary btn-sm">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <main style="flex:1;">
+    <section style="text-align:center; padding: 5rem 1.5rem 3.5rem 1.5rem; max-width: 1000px; margin: 0 auto;">
+      <div class="badge badge-stable" style="margin-bottom:1.5rem; font-size:0.85rem; padding:0.4rem 1rem;">
+        🚀 Next-Generation EdTech Platform 2026
+      </div>
+      <h1 style="font-size:3.2rem; font-weight:800; line-height:1.15; margin-bottom:1.5rem;">
+        One platform. Shared knowledge.<br/>
+        <span style="background: linear-gradient(135deg, #60a5fa, #c084fc, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+          Personalized learning. Connected learners.
+        </span>
+      </h1>
+      <p style="font-size:1.2rem; color:var(--text-muted); max-width:760px; margin: 0 auto 2.5rem auto;">
+        AdaptiveLearn AI is an AI- and Machine-Learning-powered adaptive learning platform that continuously understands what each student knows, adapts their learning path, content, pace, difficulty and learning resources, connects students through course-based communities, and connects struggling learners with facilitators through actionable real-time interventions.
+      </p>
+
+      <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-bottom:3rem;">
+        <a href="/dashboard" class="btn btn-primary" style="font-size:1.05rem; padding:0.85rem 2rem;">
+          Launch Student Dashboard ⚡
+        </a>
+        <a href="/facilitator" class="btn btn-secondary" style="font-size:1.05rem; padding:0.85rem 2rem;">
+          Facilitator Intervention Console 🔍
+        </a>
+      </div>
+
+      <!-- Live Demo Persona Bar -->
+      <div class="card" style="text-align:left; background:rgba(15, 23, 42, 0.85); border:1px solid rgba(99,102,241,0.3); padding:1.5rem;">
+        <div style="font-weight:700; color:#fff; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem;">
+          <span>🎯</span> Instant 1-Click Persona Demos (Evaluate Individual Adaptive Pathways):
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem;">
+          <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); padding:1rem; border-radius:var(--radius-sm);">
+            <div style="font-weight:700; color:#fff;">Rahul Sharma</div>
+            <div style="font-size:0.8rem; color:#f43f5e; margin:0.2rem 0;">Needs Support • Math Gap</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Statistics 43% | Interest: Space</div>
+            <button class="btn btn-primary btn-sm btn-quick-login" data-email="rahul@school.edu" style="width:100%;">
+              Demo as Rahul
+            </button>
+          </div>
+          <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); padding:1rem; border-radius:var(--radius-sm);">
+            <div style="font-weight:700; color:#fff;">Priya Patel</div>
+            <div style="font-size:0.8rem; color:#10b981; margin:0.2rem 0;">Improving • High Mastery</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Statistics 82% | Interest: Robotics</div>
+            <button class="btn btn-primary btn-sm btn-quick-login" data-email="priya@school.edu" style="width:100%;">
+              Demo as Priya
+            </button>
+          </div>
+          <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); padding:1rem; border-radius:var(--radius-sm);">
+            <div style="font-weight:700; color:#fff;">Dr. Robert Sharma</div>
+            <div style="font-size:0.8rem; color:#60a5fa; margin:0.2rem 0;">Facilitator / Educator</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">Real-time intervention alert table</div>
+            <button class="btn btn-secondary btn-sm btn-quick-login" data-email="teacher@school.edu" style="width:100%;">
+              Demo Facilitator
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Pillars Grid -->
+    <section style="max-width:1200px; margin: 2rem auto; padding: 0 1.5rem;">
+      <h2 style="text-align:center; font-size:2rem; margin-bottom:2.5rem;">Continuous Adaptive Learning Loop</h2>
+      
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem;">
+        <div class="card">
+          <div style="font-size:2rem; margin-bottom:1rem;">🕸️</div>
+          <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">Prerequisite Knowledge Graph</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted);">
+            Concepts are mapped as a prerequisite DAG with 70% mastery gating. Dependent concepts remain locked until demonstrated understanding is verified.
+          </p>
+        </div>
+        <div class="card">
+          <div style="font-size:2rem; margin-bottom:1rem;">🤖</div>
+          <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">Real Scikit-Learn Engine</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted);">
+            A Decision Tree classifier analyzes 8 educational signals (scores, attempts, trend slope, engagement) to classify learning state: Improving, Stable, or Needs Support.
+          </p>
+        </div>
+        <div class="card">
+          <div style="font-size:2rem; margin-bottom:1rem;">🚀</div>
+          <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">AI Contextual Re-Theming</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted);">
+            Mathematical and computational problems are re-themed into the student's personal interests (Space, Robotics, Gaming) with strict mathematical invariance guardrails.
+          </p>
+        </div>
+        <div class="card">
+          <div style="font-size:2rem; margin-bottom:1rem;">📺</div>
+          <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">YouTube Learning & History</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted);">
+            Course-specific playlists from verified channels (Khan Academy, MIT, StatQuest, 3Blue1Brown) with progress tracking, continue watching, and full viewing analytics.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-tagline">“One platform. Shared knowledge. Personalized learning. Connected learners.”</div>
+    <div>AdaptiveLearn AI © 2026. Built with Python, Flask, scikit-learn, and Vanilla HTML/CSS/JS.</div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/auth.js"></script>
+</body>
+</html>

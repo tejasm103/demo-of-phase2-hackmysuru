@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — AdaptiveLearn AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+</head>
+<body style="justify-content:center; align-items:center;">
+
+  <nav class="navbar" style="position:fixed; width:100%; top:0; left:0;">
+    <div class="nav-brand">
+      <a href="/" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none;">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">AdaptiveLearn <span>AI</span></div>
+      </a>
+    </div>
+    <div class="nav-actions">
+      <a href="/login" class="btn btn-secondary btn-sm">Sign In</a>
+    </div>
+  </nav>
+
+  <div style="width:100%; max-width:480px; margin: 6rem auto 2rem auto; padding:0 1rem;">
+    <div class="card" style="padding:2.25rem 2rem;">
+      <div style="text-align:center; margin-bottom:1.75rem;">
+        <div class="brand-icon" style="margin:0 auto 1rem auto; width:48px; height:48px; font-size:1.5rem;">⚡</div>
+        <h2 style="font-size:1.6rem; font-weight:800;">Create Account</h2>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.25rem;">
+          Join the adaptive learning ecosystem
+        </p>
+      </div>
+
+      <form id="registerForm">
+        <div style="margin-bottom:1.25rem;">
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">
+            Full Name
+          </label>
+          <input type="text" id="regName" required placeholder="e.g. Alex Morgan" 
+                 style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none; font-size:0.95rem;" />
+        </div>
+
+        <div style="margin-bottom:1.25rem;">
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">
+            Email Address
+          </label>
+          <input type="email" id="regEmail" required placeholder="name@school.edu" 
+                 style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none; font-size:0.95rem;" />
+        </div>
+
+        <div style="margin-bottom:1.25rem;">
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">
+            Password
+          </label>
+          <input type="password" id="regPassword" required placeholder="At least 6 characters" 
+                 style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none; font-size:0.95rem;" />
+        </div>
+
+        <div style="margin-bottom:1.75rem;">
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">
+            Role
+          </label>
+          <select id="regRole" style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none; font-size:0.95rem;">
+            <option value="student">Student Learner</option>
+            <option value="facilitator">Teacher / Facilitator</option>
+            <option value="admin">School Administrator</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; padding:0.85rem; font-size:1rem;">
+          Register & Continue →
+        </button>
+      </form>
+
+      <div style="text-align:center; margin-top:1.5rem; font-size:0.85rem; color:var(--text-muted);">
+        Already have an account? <a href="/login">Sign in</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/auth.js"></script>
+</body>
+</html>

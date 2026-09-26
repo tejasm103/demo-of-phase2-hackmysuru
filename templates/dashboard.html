@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard — AdaptiveLearn AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <a href="/dashboard" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none;">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">AdaptiveLearn <span>AI</span></div>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/dashboard" class="nav-item active">Dashboard</a></li>
+      <li><a href="/courses" class="nav-item">Courses</a></li>
+      <li><a href="/videos" class="nav-item">YouTube Learning</a></li>
+      <li><a href="/history" class="nav-item">Viewed History</a></li>
+      <li><a href="/community" class="nav-item">Community</a></li>
+      <li><a href="/facilitator" class="nav-item">Facilitator Portal</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="persona-switcher">
+        <span>👤 Switch Student:</span>
+        <select id="globalPersonaSelect">
+          <option value="1">Rahul (Math 43% • Space)</option>
+          <option value="2">Priya (Math 82% • Robotics)</option>
+          <option value="3">Arjun (CS 68% • Gaming)</option>
+          <option value="4">Ananya (Physics 88% • Environment)</option>
+          <option value="5">Kiran (Diagnostic Pending)</option>
+          <option value="6">Dr. Sharma (Facilitator)</option>
+          <option value="7">Principal Davis (Admin)</option>
+        </select>
+      </div>
+      <a href="/api/auth/logout" class="btn btn-secondary btn-sm">Sign Out</a>
+    </div>
+  </nav>
+
+  <!-- Main Dashboard Container -->
+  <main class="dashboard-container">
+    <!-- Header Greeting -->
+    <header class="dashboard-header">
+      <div class="welcome-text">
+        <h1>Good morning, <span id="studentNameHeader">Student</span> 👋</h1>
+        <p>Your learning path is continually adapting based on your performance, mastery, and cognitive learning state.</p>
+      </div>
+      <div style="display:flex; gap:0.75rem;">
+        <a href="/assessment?diagnostic=true" class="btn btn-secondary btn-sm">Take Diagnostic Test</a>
+        <a href="/learning" class="btn btn-primary btn-sm">⚡ Adaptive Session</a>
+      </div>
+    </header>
+
+    <!-- Key Metrics Grid (6 Metrics Cards) -->
+    <section class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">Overall Mastery</div>
+        <div class="metric-val" id="metricMastery">50%</div>
+        <div class="metric-sub">Prerequisite Gated (>=70%)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Current Course</div>
+        <div class="metric-val" id="metricCourse" style="font-size:1.4rem;">Mathematics</div>
+        <div class="metric-sub">Grade 10 STEM Track</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Current Gap Concept</div>
+        <div class="metric-val" id="metricConcept" style="font-size:1.25rem; color:#f59e0b;">Statistics</div>
+        <div class="metric-sub">Active Adaptive Target</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Learning Goal</div>
+        <div class="metric-val" id="metricGoal" style="font-size:1.05rem; line-height:1.2;">Master Subject</div>
+        <div class="metric-sub">Self-Selected Target</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Learning Streak</div>
+        <div class="metric-val" id="metricStreak">5 Days 🔥</div>
+        <div class="metric-sub">Consistent Engagement</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">ML Learning State</div>
+        <div style="margin:0.5rem 0;">
+          <span id="metricMlState" class="badge badge-support" style="font-size:0.95rem; padding:0.4rem 0.85rem;">
+            Needs Support
+          </span>
+        </div>
+        <div class="metric-sub">Real Scikit-Learn Classifier</div>
+      </div>
+    </section>
+
+    <!-- Hero Continue Learning (Next Best Activity) -->
+    <section class="adaptive-hero-card">
+      <div class="adaptive-tag">⚡ Next Best Adaptive Activity</div>
+      <div class="adaptive-hero-body">
+        <div class="adaptive-info">
+          <h2 id="heroActivityTitle">Targeted Guided Practice: Statistics & Distributions</h2>
+          <p id="heroActivityDesc">
+            We detected recurring errors on sample variance and distributions. Let's work through guided space-themed examples with step-by-step Socratic hints before reassessment.
+          </p>
+          <div class="adaptive-meta-row">
+            <span class="meta-item" id="heroDifficulty">📊 Difficulty: Medium</span>
+            <span class="meta-item" id="heroInterest">🚀 Context Applied: Space</span>
+            <span class="meta-item" id="heroRationale" style="color:#a5b4fc;">Adaptive Rationale: Mastery 43% &lt; 70% threshold</span>
+          </div>
+        </div>
+        <div>
+          <button id="btnStartActivity" class="btn btn-primary" style="padding:0.9rem 2rem; font-size:1.05rem; white-space:nowrap;">
+            Start Activity →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2-Column Main Grid -->
+    <div class="dashboard-main-grid">
+      <!-- Left Column: Knowledge Graph & Video Recommendations -->
+      <div>
+        <!-- Interactive Knowledge Graph -->
+        <div class="graph-container">
+          <div class="card-header">
+            <h3 class="card-title">🕸️ Course Knowledge Graph & Prerequisite Progression</h3>
+            <span style="font-size:0.85rem; color:var(--text-subtle);">Click any unlocked node to practice</span>
+          </div>
+          <div class="graph-legend">
+            <span><span class="legend-dot dot-mastered"></span> Mastered (&gt;=70%)</span>
+            <span><span class="legend-dot dot-learning"></span> Learning</span>
+            <span><span class="legend-dot dot-practice"></span> Needs Practice</span>
+            <span><span class="legend-dot dot-locked"></span> 🔒 Locked (Prerequisite Required)</span>
+          </div>
+          <div class="graph-canvas-wrapper">
+            <div class="dag-nodes-row" id="knowledgeGraphNodes">
+              <!-- Nodes populated dynamically by dashboard.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Continue Watching Card -->
+        <div class="card" style="margin-bottom:2rem;">
+          <div class="card-header">
+            <h3 class="card-title">▶ Continue Watching</h3>
+            <a href="/history" style="font-size:0.85rem;">Full History →</a>
+          </div>
+          <div class="media-card-grid" id="continueWatchingList">
+            <!-- Populated by dashboard.js -->
+          </div>
+        </div>
+
+        <!-- Recommended Playlists -->
+        <div class="card" style="margin-bottom:2rem;">
+          <div class="card-header">
+            <h3 class="card-title">📺 Recommended For You (Course-Specific Playlists)</h3>
+            <a href="/videos" style="font-size:0.85rem;">Browse All →</a>
+          </div>
+          <div class="media-card-grid" id="recommendedPlaylistsGrid">
+            <!-- Populated by dashboard.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Today's Path, AI Coach, Analytics -->
+      <div>
+        <!-- AI Coaching Narrative -->
+        <div class="card" style="background:rgba(99,102,241,0.08); border-color:rgba(99,102,241,0.3); margin-bottom:1.5rem;">
+          <h4 style="color:#c7d2fe; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
+            <span>🤖</span> AI Personalized Recommendation
+          </h4>
+          <p id="aiCoachText" style="font-size:0.9rem; color:#cbd5e1; line-height:1.5;">
+            Analyzing your performance across course concepts...
+          </p>
+        </div>
+
+        <!-- Today's Adaptive Path -->
+        <div class="card" style="margin-bottom:1.5rem;">
+          <div class="card-header">
+            <h3 class="card-title">📅 Today's Adaptive Sequence</h3>
+          </div>
+          <div class="path-step-list" id="adaptivePathList">
+            <!-- Populated by dashboard.js -->
+          </div>
+        </div>
+
+        <!-- My Courses -->
+        <div class="card" style="margin-bottom:1.5rem;">
+          <div class="card-header">
+            <h3 class="card-title">📚 My Courses</h3>
+          </div>
+          <div class="path-step-list" id="enrolledCoursesList">
+            <!-- Populated by dashboard.js -->
+          </div>
+        </div>
+
+        <!-- Analytics Charts -->
+        <div class="card" style="margin-bottom:1.5rem;">
+          <div class="card-header">
+            <h3 class="card-title">📈 Demonstrated Mastery Delta</h3>
+          </div>
+          <p style="font-size:0.75rem; color:var(--text-subtle); margin-bottom:0.75rem;">
+            *Note: Mastery is verified through demonstrated practice and assessment performance, not video watching alone.
+          </p>
+          <canvas id="chartMasteryDelta" height="200"></canvas>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">⏱ Video Learning Activity</h3>
+          </div>
+          <canvas id="chartCourseViews" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-tagline">“One platform. Shared knowledge. Personalized learning. Connected learners.”</div>
+    <div>AdaptiveLearn AI © 2026. Built with Python, Flask, scikit-learn, and Vanilla HTML/CSS/JS.</div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

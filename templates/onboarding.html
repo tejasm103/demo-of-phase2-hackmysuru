@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Onboarding — AdaptiveLearn AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="brand-icon">⚡</div>
+      <div class="brand-text">AdaptiveLearn <span>AI</span></div>
+    </div>
+    <div class="nav-actions">
+      <span class="badge badge-learning">Step 1: Adaptive Profiling</span>
+    </div>
+  </nav>
+
+  <div class="dashboard-container" style="max-width:840px;">
+    <div class="card" style="padding:2.5rem 2rem;">
+      <div style="margin-bottom:2rem; text-align:center;">
+        <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.5rem;">Personalize Your Learning Universe</h1>
+        <p style="color:var(--text-muted); font-size:1rem;">
+          The adaptive engine customizes difficulty, sequencing, and narrative problems according to your goals and interests.
+        </p>
+      </div>
+
+      <form id="onboardingForm">
+        <!-- School & Grade -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.5rem;">
+          <div>
+            <label style="display:block; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">Select School</label>
+            <select id="onboardSchool" style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none;">
+              <option value="1">Apex International STEM Academy</option>
+              <option value="2">Metro Heights Collegiate School</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">Select Grade / Class</label>
+            <select id="onboardGrade" style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none;">
+              <option value="1">Grade 8</option>
+              <option value="2">Grade 9</option>
+              <option value="3" selected>Grade 10</option>
+              <option value="4">Grade 11</option>
+              <option value="5">Grade 12</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Academic Stream & Primary Course -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.5rem;">
+          <div>
+            <label style="display:block; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">Academic Stream</label>
+            <select id="onboardStream" style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none;">
+              <option value="1">Computer Science</option>
+              <option value="2" selected>Mathematics</option>
+              <option value="3">Science</option>
+              <option value="4">Electronics</option>
+              <option value="5">Mechanical</option>
+              <option value="6">Civil</option>
+              <option value="7">Commerce</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">Starting Course Focus</label>
+            <select id="onboardCourse" style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none;">
+              <option value="1" selected>Mathematics (Algebra, Statistics, Probability)</option>
+              <option value="2">Computer Science (Python, Data Structures, Algorithms)</option>
+              <option value="3">Physics (Mechanics, Thermodynamics, Electromagnetism)</option>
+              <option value="4">Science (Integrated)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Student Interests Selection -->
+        <div style="margin-bottom:1.75rem;">
+          <label style="display:block; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">
+            Select Personal Interests (Used by AI to Re-theme Questions):
+          </label>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:0.75rem;" id="interestBadgesGroup">
+            <label class="interest-check-label">
+              <input type="checkbox" name="interest" value="Space" checked />
+              <span>🚀 Space</span>
+            </label>
+            <label class="interest-check-label">
+              <input type="checkbox" name="interest" value="Robotics" />
+              <span>🤖 Robotics</span>
+            </label>
+            <label class="interest-check-label">
+              <input type="checkbox" name="interest" value="Gaming" />
+              <span>🎮 Gaming</span>
+            </label>
+            <label class="interest-check-label">
+              <input type="checkbox" name="interest" value="Technology" checked />
+              <span>💻 Technology</span>
+            </label>
+            <label class="interest-check-label">
+              <input type="checkbox" name="interest" value="Environment" />
+              <span>🌱 Environment</span>
+            </label>
+            <label class="interest-check-label">
+              <input type="checkbox" name="interest" value="Sports" />
+              <span>⚽ Sports</span>
+            </label>
+            <label class="interest-check-label">
+              <input type="checkbox" name="interest" value="Cars" />
+              <span>🏎️ Cars</span>
+            </label>
+            <label class="interest-check-label">
+              <input type="checkbox" name="interest" value="Business" />
+              <span>📈 Business</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Learning Goals & Style -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:2rem;">
+          <div>
+            <label style="display:block; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">Primary Learning Goal</label>
+            <select id="onboardGoal" style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none;">
+              <option value="Master a subject">Master a subject & concepts</option>
+              <option value="Improve fundamentals">Improve fundamentals</option>
+              <option value="Competitive exam preparation">Competitive exam preparation</option>
+              <option value="Pass exams">Pass exams with distinction</option>
+              <option value="Learn programming">Learn programming</option>
+              <option value="Complete course">Complete course curriculum</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">Preferred Learning Style</label>
+            <select id="onboardStyle" style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none;">
+              <option value="Visual & Guided Practice">Visual & Guided Practice</option>
+              <option value="Step-by-Step Problem Solving">Step-by-Step Problem Solving</option>
+              <option value="Video First Then Assessment">Video First Then Assessment</option>
+              <option value="Project-Based Practical">Project-Based Practical</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; padding:0.95rem; font-size:1.05rem;">
+          Save Profile & Launch Diagnostic Assessment →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    .interest-check-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .interest-check-label:hover {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+  </style>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    document.getElementById('onboardingForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const school_id = parseInt(document.getElementById('onboardSchool').value);
+      const grade_id = parseInt(document.getElementById('onboardGrade').value);
+      const stream_id = parseInt(document.getElementById('onboardStream').value);
+      const course_id = parseInt(document.getElementById('onboardCourse').value);
+      const primary_goal = document.getElementById('onboardGoal').value;
+      const preferred_learning_style = document.getElementById('onboardStyle').value;
+
+      const checkedBoxes = document.querySelectorAll('input[name="interest"]:checked');
+      const interests = Array.from(checkedBoxes).map(cb => cb.value);
+
+      try {
+        await App.api('/api/onboarding', {
+          method: 'POST',
+          body: {
+            school_id, grade_id, stream_id, course_id, primary_goal, preferred_learning_style, interests
+          }
+        });
+        App.toast('Onboarding saved! Starting diagnostic assessment...', 'success');
+        setTimeout(() => {
+          window.location.href = `/assessment?course_id=${course_id}&diagnostic=true`;
+        }, 600);
+      } catch (err) {
+        // handled
+      }
+    });
+  </script>
+</body>
+</html>

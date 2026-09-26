@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adaptive Practice Session — AdaptiveLearn AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/learning.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">
+      <a href="/dashboard" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none;">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">AdaptiveLearn <span>AI</span></div>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/dashboard" class="nav-item">Dashboard</a></li>
+      <li><a href="/courses" class="nav-item">Courses</a></li>
+      <li><a href="/videos" class="nav-item">YouTube Learning</a></li>
+      <li><a href="/history" class="nav-item">Viewed History</a></li>
+      <li><a href="/community" class="nav-item">Community</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="/dashboard" class="btn btn-secondary btn-sm">Exit Session</a>
+    </div>
+  </nav>
+
+  <main class="learning-container" id="questionContainer">
+    <div class="learning-top-bar">
+      <div>
+        <div class="interest-pill" id="sessionInterestBadge">
+          🚀 Narrative Context: Space
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <span id="questionDiffBadge" class="badge badge-practice">Medium</span>
+        <span id="questionCounter" class="badge badge-stable" style="font-size:0.85rem; padding:0.35rem 0.75rem;">
+          Question 1 of 4
+        </span>
+      </div>
+    </div>
+
+    <!-- Question Card -->
+    <div class="question-card">
+      <div class="question-header">
+        <span style="font-size:0.85rem; font-weight:700; color:var(--accent-cyan); text-transform:uppercase; letter-spacing:0.05em;">
+          🎯 Adaptive Question (Contextually Re-Themed)
+        </span>
+        <button id="btnToggleTutor" class="btn btn-secondary btn-sm" style="font-size:0.8rem;">
+          💡 Need a Hint? (Socratic Tutor)
+        </button>
+      </div>
+
+      <div class="question-prompt" id="questionPrompt">
+        Loading contextually personalized question...
+      </div>
+
+      <div class="options-list" id="questionOptions">
+        <!-- Populated by learning.js -->
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="font-size:0.8rem; color:var(--text-subtle);">
+          Mathematical constraints & numbers are rigorously preserved under AI re-theming.
+        </div>
+        <button id="btnNextQuestion" class="btn btn-primary" style="padding:0.8rem 2.25rem;" disabled>
+          Next Question →
+        </button>
+      </div>
+    </div>
+
+    <!-- Socratic AI Tutor Drawer (Hidden by default) -->
+    <div class="tutor-drawer" id="tutorDrawer" style="display:none;">
+      <div class="tutor-header">
+        <h3 style="display:flex; align-items:center; gap:0.5rem; font-size:1.1rem; color:#fff;">
+          <span>🤖</span> Socratic AI Learning Assistant
+        </h3>
+        <span style="font-size:0.75rem; color:var(--text-subtle);">Guided reasoning • Never gives raw answers</span>
+      </div>
+      <div class="tutor-content" id="tutorContentArea">
+        Loading Socratic guidance and analogies...
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/learning.js"></script>
+</body>
+</html>

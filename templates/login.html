@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — AdaptiveLearn AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+</head>
+<body style="justify-content:center; align-items:center;">
+
+  <nav class="navbar" style="position:fixed; width:100%; top:0; left:0;">
+    <div class="nav-brand">
+      <a href="/" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none;">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">AdaptiveLearn <span>AI</span></div>
+      </a>
+    </div>
+    <div class="nav-actions">
+      <a href="/register" class="btn btn-secondary btn-sm">Create Account</a>
+    </div>
+  </nav>
+
+  <div style="width:100%; max-width:440px; margin: 6rem auto 2rem auto; padding:0 1rem;">
+    <div class="card" style="padding:2.25rem 2rem;">
+      <div style="text-align:center; margin-bottom:1.75rem;">
+        <div class="brand-icon" style="margin:0 auto 1rem auto; width:48px; height:48px; font-size:1.5rem;">⚡</div>
+        <h2 style="font-size:1.6rem; font-weight:800;">Welcome Back</h2>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.25rem;">
+          Sign in to your adaptive learning environment
+        </p>
+      </div>
+
+      <form id="loginForm">
+        <div style="margin-bottom:1.25rem;">
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:#cbd5e1; margin-bottom:0.4rem;">
+            Email Address
+          </label>
+          <input type="email" id="loginEmail" required placeholder="name@school.edu" 
+                 style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none; font-size:0.95rem;" />
+        </div>
+
+        <div style="margin-bottom:1.5rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+            <label style="font-size:0.85rem; font-weight:600; color:#cbd5e1;">Password</label>
+            <span style="font-size:0.75rem; color:var(--text-subtle);">Demo: password123</span>
+          </div>
+          <input type="password" id="loginPassword" required placeholder="••••••••" 
+                 style="width:100%; background:#0f172a; border:1px solid var(--border-subtle); color:#fff; padding:0.75rem 1rem; border-radius:var(--radius-md); outline:none; font-size:0.95rem;" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; padding:0.8rem; font-size:1rem;">
+          Sign In
+        </button>
+      </form>
+
+      <!-- 1-Click Demo Personas -->
+      <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border-subtle);">
+        <div style="font-size:0.8rem; font-weight:700; color:var(--text-subtle); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.85rem; text-align:center;">
+          ⚡ 1-Click Demo Evaluation Accounts
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <button class="btn btn-secondary btn-sm btn-quick-login" data-email="rahul@school.edu" style="justify-content:space-between; text-align:left;">
+            <span><strong>Rahul Sharma</strong> (Struggling Math • Space)</span>
+            <span style="color:#f43f5e; font-size:0.75rem;">Needs Support</span>
+          </button>
+          <button class="btn btn-secondary btn-sm btn-quick-login" data-email="priya@school.edu" style="justify-content:space-between; text-align:left;">
+            <span><strong>Priya Patel</strong> (Mastered Math • Robotics)</span>
+            <span style="color:#10b981; font-size:0.75rem;">Improving</span>
+          </button>
+          <button class="btn btn-secondary btn-sm btn-quick-login" data-email="arjun@school.edu" style="justify-content:space-between; text-align:left;">
+            <span><strong>Arjun Verma</strong> (Comp Sci • Gaming)</span>
+            <span style="color:#06b6d4; font-size:0.75rem;">Stable</span>
+          </button>
+          <button class="btn btn-secondary btn-sm btn-quick-login" data-email="teacher@school.edu" style="justify-content:space-between; text-align:left;">
+            <span><strong>Dr. Sharma</strong> (Facilitator Console)</span>
+            <span style="color:#a855f7; font-size:0.75rem;">Facilitator</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/auth.js"></script>
+</body>
+</html>

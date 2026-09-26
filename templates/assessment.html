@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnostic Assessment — AdaptiveLearn AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/learning.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">
+      <a href="/dashboard" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none;">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">AdaptiveLearn <span>AI</span></div>
+      </a>
+    </div>
+    <div class="nav-actions">
+      <span class="badge badge-warning">Prerequisite Diagnostic Mode</span>
+      <a href="/dashboard" class="btn btn-secondary btn-sm">Skip to Dashboard</a>
+    </div>
+  </nav>
+
+  <main class="learning-container" id="diagContainer">
+    <div class="learning-top-bar">
+      <div>
+        <h2 style="font-size:1.5rem; font-weight:800;">Diagnostic Prerequisite Assessment</h2>
+        <p style="color:var(--text-muted); font-size:0.9rem;">
+          These foundational questions calibrate your initial knowledge graph and unlock appropriate starting concepts.
+        </p>
+      </div>
+      <div>
+        <span id="diagCounter" class="badge badge-stable" style="font-size:0.85rem; padding:0.4rem 0.8rem;">
+          Question 1 of 5
+        </span>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="badge badge-mastered">Prerequisite Baseline</span>
+      </div>
+
+      <div class="question-prompt" id="diagPrompt">
+        Loading diagnostic question from curriculum bank...
+      </div>
+
+      <div class="options-list" id="diagOptions">
+        <!-- Populated by assessment.js -->
+      </div>
+
+      <div style="display:flex; justify-content:flex-end;">
+        <button id="btnNextDiag" class="btn btn-primary" style="padding:0.8rem 2rem;" disabled>
+          Next Question →
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/assessment.js"></script>
+</body>
+</html>
